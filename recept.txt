@@ -29,3 +29,7 @@ git push -u origin main
 git add .
 git commit -m "some text"
 git push
+
+# клонирование
+# cd projectFolder
+# git clone https://github.com/Amankaium/py3-hh.git
