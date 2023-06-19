@@ -1,0 +1,16 @@
+python -m venv venv
+call source\Scripts\activate
+pip install django
+pip freeze > requirements.txt
+django-admin startproject handhunter . # (!) пробел и точка в конце
+python manage.py migrate
+python manage.py createsuperuser
+# далее вводит логин и пароль
+# если что-то спросить, просто "у" (английское) и enter
+python manage.py runserver
+
+# далее в браузере
+# заходим в localhost:8000/admin/
+# вводим логин и пароль
+django-admin startapp core
+python manage.py startapp worker
