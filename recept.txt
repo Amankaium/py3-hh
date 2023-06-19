@@ -14,3 +14,13 @@ python manage.py runserver
 # вводим логин и пароль
 django-admin startapp core
 python manage.py startapp worker
+
+
+# git
+git init
+# .gitignore
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:Amankaium/py3-hh.git
+git push -u origin main
