@@ -12,6 +12,9 @@ python manage.py runserver
 # далее в браузере
 # заходим в localhost:8000/admin/
 # вводим логин и пароль
+
+
+# создание app (приложение)
 django-admin startapp core
 python manage.py startapp worker
 
@@ -33,3 +36,10 @@ git push
 # клонирование
 # cd projectFolder
 # git clone https://github.com/Amankaium/py3-hh.git
+
+
+# Модели
+# Создать класс (модель) в core.models
+python manage.py makemigrations
+python manage.py migrate
+# добавляем его в админку
