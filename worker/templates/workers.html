@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Кандидаты</title>
+</head>
+<body>
+    <h1>Кандидаты</h1>
+    {% for worker in workers %}
+        <div>
+            {{ worker.name }} - {{ worker.specialization }}
+        </div>
+    {% endfor %}
+</body>
+</html>

@@ -30,3 +30,4 @@ def vacancy_list(request):
     context = {"vacancies": vacancies}  # context data для jinja2
     context["example"] = "hello"
     return render(request, 'vacancies.html', context)
+
