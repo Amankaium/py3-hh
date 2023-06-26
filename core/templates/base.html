@@ -13,10 +13,18 @@
         <a href="/">Домой</a> |
         <a href="/vacancies">Вакансии</a> |
         <a href="/workers">Кандидаты</a> |
-        <a href="/about">АНАНАС!</a>
+        <a href="/resume-list">Резюме</a> |
+        <a href="{% url 'my-resume' %}">Мои Резюме</a> |
+        <a href="/about">АНАНАС!</a> |
+        {% if request.user.is_authenticated %}
+            Привет, {{ request.user.username }}!
+        {% else %}
+            Пожалуйста, авторизуйтесь
+        {% endif %}
     </nav>
     {% block content %}
     {% endblock %}
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <footer>
         <hr>
         88005355<br/>

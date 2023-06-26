@@ -31,3 +31,4 @@ def vacancy_list(request):
     context["example"] = "hello"
     return render(request, 'vacancies.html', context)
 
+
