@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block my_title %}
+            Hand Hunter
+        {% endblock %}
+    </title>
+</head>
+<body>
+    <nav>
+        <a href="/">Домой</a> |
+        <a href="/vacancies">Вакансии</a> |
+        <a href="/workers">Кандидаты</a> |
+        <a href="/about">АНАНАС!</a>
+    </nav>
+    {% block content %}
+    {% endblock %}
+    <footer>
+        <hr>
+        88005355<br/>
+        Адрес: Бишкек, 7 м-н
+    </footer>
+</body>
+</html>
