@@ -10,7 +10,12 @@
     {{ example }}
     <hr>
     {% for v in vacancies %}
-        <div>{{ v.title }} - {{ v.salary }}</div>
+        <div>
+            <a href="{% url 'vacancy-info' v.id %}">
+                {{ v.title }}
+            </a>
+             - {{ v.salary }}
+        </div>
     {% endfor %}
 
 {% endblock %}

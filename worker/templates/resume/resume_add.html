@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="form-title">
+        <textarea name="form-text" cols="20" rows="5"></textarea>
+        <button>Добавить</button>
+    </form>
+
+{% endblock %}
