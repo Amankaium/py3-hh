@@ -77,3 +77,19 @@ def vacancy_add(request):
         new_vacancy.save()
         return redirect(f'/vacancy/{new_vacancy.id}/')
     return render(request, 'vacancy/vacancy_form.html')
+
+
+def vacancy_edit(request, id):
+    vacancy = Vacancy.objects.get(id=id)
+    if request.method == "POST":
+        vacancy.title = request.POST["title"]
+        vacancy.salary = int(request.POST["salary"])
+        vacancy.description = request.POST["description"]
+        vacancy.email = request.POST["email"]
+        vacancy.contacts = request.POST["contacts"]
+        vacancy.save()
+        return redirect(f'/vacancy/{vacancy.id}/')
+    return render(
+        request, 'vacancy/vacancy_edit_form.html',
+        {"vacancy": vacancy}
+    )

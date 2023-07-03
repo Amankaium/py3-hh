@@ -15,7 +15,8 @@ class Vacancy(models.Model):
     )
     category = models.ForeignKey(
         to='Category',
-        null=True, blank=True,
+        null=True,  # обязательный в базе данных
+        blank=True,  # обязательный в django
         on_delete=models.SET_NULL,
         verbose_name='категория'
     )

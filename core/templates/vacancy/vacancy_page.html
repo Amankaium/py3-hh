@@ -13,4 +13,5 @@
             <li>{{ candidate.name }}</li>
         {% endfor %}
     </ul>
+    <a href="{% url 'vacancy-edit' vacancy.id %}">Изменить</a>
 {% endblock %}

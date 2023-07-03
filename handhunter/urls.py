@@ -28,6 +28,7 @@ urlpatterns = [
     path('address/', address),
     path('vacancies/', vacancy_list),
     path('vacancy/<int:id>/', vacancy_detail, name='vacancy-info'),
+    path('vacancy-edit/<int:id>/', vacancy_edit, name='vacancy-edit'),
     path('add-vacancy/', vacancy_add),
     path("workers/", workers),
     path("worker/<int:id>/", worker_info),
