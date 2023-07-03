@@ -21,6 +21,7 @@
         <a href="{% url 'add-resume' %}">Добавить</a> |
             Привет, {{ request.user.username }}!
         {% else %}
+        <a href="{% url 'reg' %}">Регистрация</a> |
             Пожалуйста, авторизуйтесь
         {% endif %}
     </nav>

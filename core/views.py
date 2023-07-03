@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from .models import Vacancy
+from django.contrib.auth.models import User
 
 # Create your views here.
 def homepage(request):
@@ -47,3 +48,18 @@ def search(request):
     vacancy_list = Vacancy.objects.filter(title__contains=word)
     context = {"vacancies": vacancy_list}
     return render(request, 'vacancies.html', context)
+
+def reg_view(request):
+    if request.method == "POST":
+        user = User(
+            username=request.POST["username"]
+        )
+        user.save()
+        user.set_password(request.POST["password"])
+        user.save()
+        return HttpResponse("Готово")
+
+    return render(
+        request,
+        "auth/registr.html"
+    )
