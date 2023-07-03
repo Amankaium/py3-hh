@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from .models import Vacancy
 from django.contrib.auth.models import User
 
@@ -63,3 +63,17 @@ def reg_view(request):
         request,
         "auth/registr.html"
     )
+
+
+def vacancy_add(request):
+    if request.method == "POST":
+        new_vacancy = Vacancy(
+            title=request.POST["title"],
+            salary=int(request.POST["salary"]),
+            description=request.POST["description"],
+            email=request.POST["email"],
+            contacts=request.POST["contacts"],
+        )
+        new_vacancy.save()
+        return redirect(f'/vacancy/{new_vacancy.id}/')
+    return render(request, 'vacancy/vacancy_form.html')
