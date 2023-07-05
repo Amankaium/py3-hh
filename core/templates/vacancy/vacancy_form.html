@@ -4,7 +4,7 @@
 
     <form method="POST">
         {% csrf_token %}
-        <input type="text" name="title" placeholder="title"><br><br>
+        <input type="text" name="title" placeholder="title" required><br><br>
         <input type="number" name="salary" placeholder="salary"><br><br>
         <textarea name="description" cols="20" rows="5" placeholder="description"></textarea><br><br>
         <input type="email" name="email" placeholder="email"><br><br>

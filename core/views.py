@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
-from .models import Vacancy
 from django.contrib.auth.models import User
+from .models import Vacancy
+from .forms import VacancyForm
 
 # Create your views here.
 def homepage(request):
@@ -78,6 +79,18 @@ def vacancy_add(request):
         return redirect(f'/vacancy/{new_vacancy.id}/')
     return render(request, 'vacancy/vacancy_form.html')
 
+def vacancy_add_via_django_form(request):
+    if request.method == "POST":
+        form = VacancyForm(request.POST)
+        if form.is_valid():
+            new_vacancy = form.save()
+            return redirect(f'/vacancy/{new_vacancy.id}/')
+    vacancy_form = VacancyForm()
+    return render(
+        request,
+        'vacancy/vacancy_django_form.html',
+        {"vacancy_form": vacancy_form}
+    )
 
 def vacancy_edit(request, id):
     vacancy = Vacancy.objects.get(id=id)

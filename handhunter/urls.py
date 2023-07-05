@@ -30,6 +30,7 @@ urlpatterns = [
     path('vacancy/<int:id>/', vacancy_detail, name='vacancy-info'),
     path('vacancy-edit/<int:id>/', vacancy_edit, name='vacancy-edit'),
     path('add-vacancy/', vacancy_add),
+    path('add-vacancy-df/', vacancy_add_via_django_form),
     path("workers/", workers),
     path("worker/<int:id>/", worker_info),
     path("resume-list/", resume_list),
