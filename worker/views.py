@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse
 from .models import Worker, Resume
-
+from .forms import ResumeEditForm
 
 def workers(request):
     workers_queryset = Worker.objects.all()
@@ -32,6 +32,20 @@ def resume_info(request, id):
         {'resume': resume_object}
     )
 
+def resume_edit(request, id):
+    resume_object = Resume.objects.get(id=id)
+
+    if request.method == "GET":
+        form = ResumeEditForm(instance=resume_object)
+        return render(request, "resume/resume_edit.html", {"form": form})
+
+    elif request.method == "POST":
+        form = ResumeEditForm(data=request.POST, instance=resume_object)
+        if form.is_valid():
+            obj = form.save()
+            return redirect(resume_info, id=obj.id)
+        else:
+            return HttpResponse("Форма не валидна")
 
 def my_resume(request):
     if request.user.is_authenticated:

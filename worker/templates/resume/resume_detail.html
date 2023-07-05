@@ -7,5 +7,6 @@
     <div>{{ resume.text }}</div>
     <hr/>
     <div>{{ resume.created_at }}</div>
+    <a href="{% url 'resume-edit' resume.id %}">Изменить</a>
 
 {% endblock %}
