@@ -1,7 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %} <!-- подключаем всю статику -->
+
     <meta charset="UTF-8">
+
+    <!-- подключаем bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- подключаем css файл -->
+    <link rel="stylesheet" href="{% static 'my_style.css' %}">
+
     <title>
         {% block my_title %}
             Hand Hunter
@@ -9,23 +19,51 @@
     </title>
 </head>
 <body>
-    <nav>
-        <a href="/">Домой</a> |
-        <a href="/vacancies">Вакансии</a> |
-        <a href="/add-vacancy">Добавить вакансию</a> |
-        <a href="/add-vacancy-df">Добавить вакансию (dj form)</a> |
-        <a href="/workers">Кандидаты</a> |
-        <a href="/resume-list">Резюме</a> |
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Logo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Домой</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/workers">Кандидаты</a>
+            </li>
 
-        <a href="/about">АНАНАС!</a> |
-        {% if request.user.is_authenticated %}
-        <a href="{% url 'my-resume' %}">Мои Резюме</a> |
-        <a href="{% url 'add-resume' %}">Добавить Резюме</a> |
-            Привет, {{ request.user.username }}!
-        {% else %}
-        <a href="{% url 'reg' %}">Регистрация</a> |
-            Пожалуйста, авторизуйтесь
-        {% endif %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Вакансии</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/vacancies">Список вакансий</a></li>
+                <li><a class="dropdown-item" href="/add-vacancy">Добавить вакансию</a> </li>
+                <li><a class="dropdown-item" href="/add-vacancy-df">Добавить вакансию (dj form)</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/resume-list">Резюме</a>
+            </li>
+          {% if request.user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'my-resume' %}">Мои Резюме</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'add-resume' %}">Добавить Резюме</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'reg' %}">Регистрация</a>
+            </li>
+          {% endif %}
+
+          </ul>
+        </div>
+      </div>
     </nav>
     <div>
         <br>
@@ -34,13 +72,15 @@
                     type="text"
                     placeholder="Ключевое слово"
                     name="keyword">
-            <button>Поиск</button>
+            <button class="btn btn-warning">Поиск</button>
         </form>
     </div>
     <hr>
 
-    {% block content %}
-    {% endblock %}
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <footer>
         <hr>
