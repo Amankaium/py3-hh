@@ -41,6 +41,8 @@ urlpatterns = [
     path("my-resume/", my_resume, name='my-resume'),
     path('search/', search, name='search'),
     path('registration/', reg_view, name='reg'),
+    path('create-company/', create_company, name='create-company'),
+    path('company-edit/<int:id>/', company_update, name='edit-company'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 # ...:8000/static/my_style.css  #  .../handhunter/core/static/my_style.css
 

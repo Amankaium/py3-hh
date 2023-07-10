@@ -37,3 +37,17 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Company(models.Model):
+    name = models.CharField(max_length=255)
+    created_date = models.DateField()
+    workers = models.ManyToManyField(
+        to=Worker,
+        blank=True,
+        related_name='company',
+    )
+
+    def __str__(self):
+        return self.name
+

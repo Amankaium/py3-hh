@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.models import User
-from .models import Vacancy
-from .forms import VacancyForm
+from .models import Vacancy, Company
+from .forms import VacancyForm, CompanyForm
 
 # Create your views here.
 def homepage(request):
@@ -106,3 +106,30 @@ def vacancy_edit(request, id):
         request, 'vacancy/vacancy_edit_form.html',
         {"vacancy": vacancy}
     )
+
+
+def create_company(request):
+    context = {}
+
+    if request.method == "POST":
+        company_form = CompanyForm(request.POST)
+        if company_form.is_valid():
+            company_form.save()
+            return HttpResponse("Готово!")
+
+    company_form = CompanyForm()
+    context["form"] = company_form
+    return render(request, 'company/create.html', context)
+
+
+def company_update(request, id):
+    company_object = Company.objects.get(id=id)
+
+    if request.method == "POST":
+        form = CompanyForm(data=request.POST, instance=company_object)
+        if form.is_valid():
+            form.save()
+            return HttpResponse("Готово!")
+
+    form = CompanyForm(instance=company_object)
+    return render(request, "company/edit.html", {"form": form})
