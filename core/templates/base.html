@@ -59,9 +59,15 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'add-resume' %}">Добавить Резюме</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'sign-out' %}">Выйти</a>
+            </li>
           {% else %}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'reg' %}">Регистрация</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'sign-in' %}">Вход</a>
             </li>
           {% endif %}
 
