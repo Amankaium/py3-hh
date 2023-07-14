@@ -87,10 +87,14 @@
     </div>
     <hr>
 
+    {% block custom_container %}
+
     <div class="container">
         {% block content %}
         {% endblock %}
     </div>
+
+    {% endblock %}
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <footer>
         <hr>

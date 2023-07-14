@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <button>Сохранить изменения</button>

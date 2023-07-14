@@ -4,9 +4,15 @@
 {% block content %}
 
     <h1>{{ resume.title }}</h1>
+    {% if resume.profile_photo %}
+    <div>
+        <img src="{{ resume.profile_photo.url }}" height="250px">
+    </div>
+    {% endif %}
     <div>{{ resume.text }}</div>
     <hr/>
     <div>{{ resume.created_at }}</div>
+
     <a href="{% url 'resume-edit' resume.id %}">Изменить</a>
 
 {% endblock %}

@@ -40,7 +40,11 @@ def resume_edit(request, id):
         return render(request, "resume/resume_edit.html", {"form": form})
 
     elif request.method == "POST":
-        form = ResumeEditForm(data=request.POST, instance=resume_object)
+        form = ResumeEditForm(
+            data=request.POST,
+            instance=resume_object,
+            files=request.FILES
+        )
         if form.is_valid():
             obj = form.save()
             return redirect(resume_info, id=obj.id)
