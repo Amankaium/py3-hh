@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponse
+from django.contrib.auth.decorators import login_required
 from .models import Worker, Resume
 from .forms import ResumeEditForm
 
@@ -63,6 +64,7 @@ def my_resume(request):
         return redirect('home')
 
 
+@login_required(login_url='sign-in')
 def add_resume(request):
     template = 'resume/resume_add.html'
     if request.method == "GET":

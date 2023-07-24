@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Рекрутер {{ recruiter_object.user.username }}</h1>
+    <div>Город: {{ recruiter_object.city }}</div>
+    <div>Страна: {{ recruiter_object.country|default_if_none:"Не указано" }}</div>
+    <div>Платёж за кандидата: {{ recruiter_object.payment_for_found }}</div>
+    <div>Процент за работника: {{ recruiter_object.bonus_percent }}</div>
+
+
+{% endblock %}
