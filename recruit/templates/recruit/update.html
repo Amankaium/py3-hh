@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+
+    <h1>Редактировать информацию о Рекрутере {{ recruiter.user.username }}</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button class="btn btn-warning">Сохранить</button>
+    </form>
+
+
+{% endblock %}
