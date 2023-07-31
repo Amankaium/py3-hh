@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.core.exceptions import ObjectDoesNotExist
 from .models import Vacancy, Company
 from .forms import VacancyForm, CompanyForm
 from .filters import VacancyFilter
@@ -9,7 +10,10 @@ from .filters import VacancyFilter
 def homepage(request):
     if request.method == "POST":
         return HttpResponse("Метод не разрешён, только GET", status=405)
-    return render(request=request, template_name="index.html")
+    context = {}
+    context["vacancies"] = Vacancy.objects.all()[:5]
+    context["companies"] = Company.objects.all()[:3]
+    return render(request=request, template_name="index.html", context=context)
 
 def about(request):
     return HttpResponse('Найдите работу или работника мечты!')
@@ -43,7 +47,10 @@ def vacancy_list(request):
 
 
 def vacancy_detail(request, id):
-    vacancy_object = Vacancy.objects.get(id=id)  # 1
+    try:
+        vacancy_object = Vacancy.objects.get(id=id)  # 1
+    except ObjectDoesNotExist:
+        return HttpResponse("Укажите верное id", status=404)
     candidates = vacancy_object.candidate.all()  # list
     context = {
         'vacancy': vacancy_object,
@@ -102,6 +109,8 @@ def vacancy_add(request):
             contacts=request.POST["contacts"],
         )
         new_vacancy.save()
+        print(new_vacancy)
+        print(new_vacancy.id)
         return redirect(f'/vacancy/{new_vacancy.id}/')
     return render(request, 'vacancy/vacancy_form.html')
 
