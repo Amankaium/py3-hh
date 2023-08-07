@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>Название: {{ new.title }}</div>
+    <div>Просмотры: {{ new.views_count }}</div>
+    <div>Уникальные просмотры: {{ new.user_views.count }}</div>
+    <div>Уникальные просмотры вариант 2: {{ new.newsviews_set.count }}</div>
+{% endblock %}
