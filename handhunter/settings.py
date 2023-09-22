@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'django_bootstrap5',
     'django_filters',
+    'schema_graph',
 
     'core',
     'worker',

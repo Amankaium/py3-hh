@@ -1,7 +1,10 @@
 asgiref==3.7.2
+attrs==23.1.0
+cattrs==23.1.2
 Django==4.2.2
 django-bootstrap5==23.3
 django-filter==23.2
+django-schema-graph==3.1.0
 Pillow==10.0.0
 psycopg2==2.9.6
 sqlparse==0.4.4
